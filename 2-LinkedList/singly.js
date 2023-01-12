@@ -1,18 +1,18 @@
-let sinlgyLinkedList = {
-  head: {
-    value: 1,
-    next: {
-      value: 2,
-      next: {
-        value: 3,
-        next: {
-          value: 4,
-          next: null,
-        },
-      },
-    },
-  },
-};
+// let sinlgyLinkedList = {
+//   head: {
+//     value: 1,
+//     next: {
+//       value: 2,
+//       next: {
+//         value: 3,
+//         next: {
+//           value: 4,
+//           next: null,
+//         },
+//       },
+//     },
+//   },
+// };
 
 class Node {
   constructor(value) {
@@ -29,7 +29,41 @@ class MySinglyLinkedList {
     };
 
     this.tail = this.head;
+    this.length = 1;
+  }
+
+  //METHODS
+  checkNode(node) {
+    if (!node.next) {
+      return node;
+    }
+    return this.checkNode(node.next);
+  }
+
+  // Agregar nodo a la cola
+  append(value) {
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this;
+  }
+
+  // Agregar nodo a la cabeza
+  prepend(value) {
+    const newNode = new Node(value);
+
+    newNode.next = this.head;
+    this.head = newNode;
+
+    this.length++;
+    return this;
   }
 }
 
-let myLinkedList = new MySinglyLinkedList(1); 
+let myLinkedList = new MySinglyLinkedList(1);
+myLinkedList.append(2);
+myLinkedList.append(3);
+console.log(myLinkedList);
+myLinkedList.prepend(29);
+console.log(myLinkedList);
