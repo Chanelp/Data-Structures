@@ -34,6 +34,28 @@ class HashTable {
     }
     return undefined;
   }
+
+  delete(key) {
+    const address = this.hashMethod(key);
+    const currentBucket = this.data[address];
+
+    if (currentBucket) {
+      // Recorriendo el espacio
+      for (let i = 0; i < currentBucket.length; i++) {
+        if (currentBucket[i][0]) {
+          // guardo el espacio para retornarlo luego
+          let deletedSpace = currentBucket[i];
+
+          // elimino el espacio
+          delete currentBucket[i];
+
+          // elimino el espacio vacio para que los demás espacios recorran
+          currentBucket.splice(i, 1);
+          return deletedSpace;
+        }
+      }
+    }
+  }
 }
 
 const myHashTable = new HashTable(50);
