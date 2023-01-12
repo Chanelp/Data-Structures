@@ -56,6 +56,19 @@ class HashTable {
       }
     }
   }
+
+  getAllKeys() {
+    const array = this.data;
+    let key = [];
+
+    array.forEach((ar) => {
+      ar.forEach((k) => {
+        key.push(k[0]);
+      });
+    });
+
+    return key;
+  }
 }
 
 const myHashTable = new HashTable(50);
@@ -64,3 +77,4 @@ myHashTable.set("color", "blue");
 myHashTable.set("currency", "dop");
 myHashTable.set("meal", "bread");
 console.log(myHashTable.get("color"));
+console.log(myHashTable.getAllKeys());
