@@ -16,7 +16,7 @@ class HashTable {
     if (!this.data[address]) {
       this.data[address] = [];
     }
-    this.data.push([key, value]);
+    this.data[address].push([key, value]);
 
     return this.data;
   }
@@ -37,3 +37,8 @@ class HashTable {
 }
 
 const myHashTable = new HashTable(50);
+
+myHashTable.set("color", "blue");
+myHashTable.set("currency", "dop");
+myHashTable.set("meal", "bread");
+console.log(myHashTable.get("color"));
