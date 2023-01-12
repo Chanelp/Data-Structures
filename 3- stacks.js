@@ -32,6 +32,23 @@ class Stacks {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (!this.length) {
+      console.error("There is no nodes in the stack.");
+      return;
+    }
+    const topNode = this.top;
+
+    if (this.length === 1) {
+      this.top = null;
+      this.bottom = null;
+    } else {
+      this.top = this.top.next;
+    }
+    this.length--;
+    return topNode;
+  }
 }
 
 let stack = new Stacks();
